@@ -8,9 +8,9 @@ export default function Home() {
 
     useEffect(() => {
         if (darkMode) {
-            setGithubSrc('/github_white.png')
+            setGithubSrc('https://i.imgur.com/AwgrBOi.png')
         } else {
-            setGithubSrc('/github_dark.webp')
+            setGithubSrc('https://i.imgur.com/qkgfyLX.png')
         }
     }, [darkMode])
 
