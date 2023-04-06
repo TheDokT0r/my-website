@@ -6,6 +6,14 @@ export default function Home() {
     const [darkMode, setDarkMode] = useState(false)
     const [github_src, setGithubSrc] = useState('/github_dark.webp')
 
+
+    const monkes = [
+        'https://i.imgur.com/LV7NUKd.jpg',
+        'https://i.imgur.com/8CGJNqc.jpg',
+        'https://i.imgur.com/BYepVRx.jpg',
+        'https://i.imgur.com/feJr7O7.jpg',
+    ]
+
     useEffect(() => {
         if (darkMode) {
             setGithubSrc('https://i.imgur.com/AwgrBOi.png')
@@ -29,10 +37,30 @@ export default function Home() {
             </div>
 
 
-            <div className='social-media_container'>
+            <div className='social-media_container'
+                style={{maginTop: '-5000000px'}}
+            >
                 <a href='https://github.com/TheDokT0r'>
                     <img className='social-media_icon' src={github_src} alt='github' />
                 </a>
+            </div>
+
+            <div className='monke-container'>
+                <h2 className='monkes-title'>
+                    I've got nothing else planned here, so here are some images of funny monkes
+                </h2>
+
+                <div >
+                    {monkes.map((monke, index) => (
+                        <img
+                            className='monke'
+                            src={monke}
+                            alt={`monke ${index}`}
+                        // width='300'
+                        // height='300'
+                        />
+                    ))}
+                </div>
             </div>
 
             <footer>There isn't really anything else in here</footer>
