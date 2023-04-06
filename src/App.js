@@ -38,7 +38,6 @@ export default function Home() {
 
 
             <div className='social-media_container'
-                style={{maginTop: '-5000000px'}}
             >
                 <a href='https://github.com/TheDokT0r'>
                     <img className='social-media_icon' src={github_src} alt='github' />
