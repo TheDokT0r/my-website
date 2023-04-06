@@ -4,7 +4,7 @@ import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 export default function Home() {
     const [darkMode, setDarkMode] = useState(false)
-    const [github_src, setGithubSrc] = useState('/github_dark.webp')
+    const [github_src, setGithubSrc] = useState('https://i.imgur.com/qkgfyLX.png')
 
 
     const monkes = [
@@ -23,7 +23,9 @@ export default function Home() {
     }, [darkMode])
 
     return (
-        <div className={darkMode ? 'container_dark' : 'container_bright'}>
+        <div
+            className={darkMode ? 'container_dark' : 'container_bright'}
+        >
             <DarkModeSwitch
                 style={{ marginBottom: '2rem' }}
                 checked={darkMode}
@@ -55,8 +57,6 @@ export default function Home() {
                             className='monke'
                             src={monke}
                             alt={`monke ${index}`}
-                        // width='300'
-                        // height='300'
                         />
                     ))}
                 </div>
