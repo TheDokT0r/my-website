@@ -1,68 +1,56 @@
-import React, { useEffect, useState } from 'react'
-import './Home.scss'
+import React, { useEffect, useState } from 'react';
+import './index.scss';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import MonkesContainer from './components/MonkesContainer';
 
-export default function Home() {
-    const [darkMode, setDarkMode] = useState(false)
-    const [github_src, setGithubSrc] = useState('https://i.imgur.com/qkgfyLX.png')
-
-
+export default function App() {
+    const [darkMode, setDarkMode] = useState(false);
+    const [githubSrc, setGithubSrc] = useState('https://i.imgur.com/qkgfyLX.png');
     const monkes = [
         'https://i.imgur.com/LV7NUKd.jpg',
         'https://i.imgur.com/8CGJNqc.jpg',
         'https://i.imgur.com/BYepVRx.jpg',
         'https://i.imgur.com/feJr7O7.jpg',
-    ]
+    ];
+
+    useEffect(() => {
+        const storedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+        if (storedDarkMode !== null) {
+            setDarkMode(storedDarkMode);
+        }
+    }, []);
 
     useEffect(() => {
         if (darkMode) {
-            setGithubSrc('https://i.imgur.com/AwgrBOi.png')
+            setGithubSrc('https://i.imgur.com/AwgrBOi.png');
         } else {
-            setGithubSrc('https://i.imgur.com/qkgfyLX.png')
+            setGithubSrc('https://i.imgur.com/qkgfyLX.png');
         }
-    }, [darkMode])
+        localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    }, [darkMode]);
 
     return (
-        <div
-            className={darkMode ? 'container_dark' : 'container_bright'}
-        >
+        <div className={darkMode ? 'container_dark' : 'container_bright'}>
             <DarkModeSwitch
                 style={{ marginBottom: '2rem' }}
                 checked={darkMode}
                 onChange={setDarkMode}
                 size={40}
             />
-
-            <div className='main-div'>
+            <div className="main-div">
                 <h1>Welcome to my website kind stranger</h1>
-                <h2>Stay as long as you'd like</h2>
+                <h2>Stay as long as you&apos;d like</h2>
             </div>
 
-
-            <div className='social-media_container'
-            >
-                <a href='https://github.com/TheDokT0r'>
-                    <img className='social-media_icon' src={github_src} alt='github' />
+            <div className="social-media_container">
+                <a href="https://github.com/TheDokT0r">
+                    <img className="social-media_icon" src={githubSrc} alt="github" />
                 </a>
             </div>
 
-            <div className='monke-container'>
-                <h2 className='monkes-title'>
-                    I've got nothing else planned here, so here are some images of funny monkes
-                </h2>
+            <MonkesContainer monkes={monkes} />
 
-                <div >
-                    {monkes.map((monke, index) => (
-                        <img
-                            className='monke'
-                            src={monke}
-                            alt={`monke ${index}`}
-                        />
-                    ))}
-                </div>
-            </div>
-
-            <footer>There isn't really anything else in here</footer>
+            <footer>There isn&apos;t really anything else in here</footer>
         </div>
-    )
+    );
 }
